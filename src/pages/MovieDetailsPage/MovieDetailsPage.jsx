@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
 import { fetchMovieDetails } from '../../components/api/tmdb';
 import styles from './MovieDetailsPage.module.css';
@@ -8,7 +8,10 @@ const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const location = useLocation();
-  const backLink = location.state?.from ?? '/movies';
+
+
+  const backLinkRef = useRef(location.state?.from ?? '/movies');
+
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
@@ -30,7 +33,7 @@ const MovieDetailsPage = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Link to={backLink} className={styles.back}>
+      <Link to={backLinkRef.current} className={styles.back}>
         ← Go back
       </Link>
 
