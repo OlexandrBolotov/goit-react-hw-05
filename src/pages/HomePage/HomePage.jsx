@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchTrendingMovies } from '../../api/tmdb';
+import { fetchTrendingMovies } from '../../components/api/tmdb';
 import MovieList from '../../components/MovieList/MovieList';
 import styles from './HomePage.module.css';
 
@@ -7,16 +7,15 @@ const HomePage = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    const getMovies = async () => {
+    const load = async () => {
       try {
         const data = await fetchTrendingMovies();
         setMovies(data);
-      } catch (error) {
-        console.error('Error fetching trending movies:', error);
+      } catch (err) {
+        console.error(err);
       }
     };
-
-    getMovies();
+    load();
   }, []);
 
   return (

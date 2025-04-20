@@ -1,0 +1,27 @@
+.wrapper {
+  padding-top: 20px;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: orange;
+}
+
+.card {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.links ul {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.links a {
+  color: lightblue;
+  font-weight: bold;
+}
